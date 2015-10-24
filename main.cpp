@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "polynomial.h"
 #include "sylvester.h"
 
 #define SIZE 128
@@ -54,7 +53,6 @@ int main(int argc, char* argv[]){
 				cout << "Give 1st polynomial degree: ";
 				cin >> d1;
 
-				//Polynomial f1(d1, func1);
 				f1.initialize(d1, func1);
 
 				cout << "Give 2nd polynomial: ";
@@ -62,7 +60,6 @@ int main(int argc, char* argv[]){
 				cout << "Give 2nd polynomial degree: ";
 				cin >> d2;
 
-				//Polynomial f2(d2, func2);
 				f2.initialize(d2, func2);
 			}
 			else return 1;
@@ -72,11 +69,11 @@ int main(int argc, char* argv[]){
 			if(strcmp(argv[2],"-d1")==0 && strcmp(argv[4],"-d2")==0){
 
 				d1 = atoi(argv[3]);
-				//Polynomial f1(d1);
+
 				f1.initialize(d1);
 
 				d2 = atoi(argv[5]);
-				//Polynomial f2(d2);
+
 				f2.initialize(d2);
 			}
 			else return 1;
@@ -86,12 +83,11 @@ int main(int argc, char* argv[]){
 	}
 	else return 1;
 
-	f1.printfunc();
 
-	cout << endl;
-
-	f2.printfunc();
 	Sylvester s(f1, f2);
+
+	s.printSMatrix();
+
 
 	return 0;
 }
